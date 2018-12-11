@@ -1,7 +1,7 @@
 #import dependencies
 import csv
 from flask import send_file
-import matplotlib.pyplot as plt
+
 import pandas as pd
 import numpy as np
 from matplotlib import cm
@@ -23,9 +23,10 @@ from sklearn.metrics import roc_auc_score
 from sklearn.metrics import classification_report
 from flask import request  
 import seaborn as sns
-import matplotlib.pyplot as plt
+
 import matplotlib
-matplotlib.style.use('ggplot') 
+matplotlib.style.use('ggplot')
+import matplotlib.pyplot as plt 
 from collections import Counter
 from sklearn.decomposition import PCA
 from sklearn.cluster import KMeans
