@@ -1,1 +1,2 @@
-# TelecomeChurning
+# theasus
+Depository for Theasus Project
