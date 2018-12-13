@@ -291,7 +291,10 @@ def index():
     model.labels_.astype(float)
     model2 = k_means(10)
     print("k_means Completed")
+    yield "<br/>"
     model2.fit(X_trans)
+    yield "<br/>"
+    print("fit Completed")
     labels = model2.labels()
     cmap = cm.get_cmap('viridis',30)
     plt.figure(figsize=(8, 6))
