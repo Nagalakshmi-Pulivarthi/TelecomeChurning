@@ -25,6 +25,7 @@ from flask import request
 import seaborn as sns
 
 import matplotlib
+matplotlib.use('Agg')
 matplotlib.style.use('ggplot')
 import matplotlib.pyplot as plt 
 from collections import Counter
