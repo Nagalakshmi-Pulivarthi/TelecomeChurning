@@ -34,7 +34,6 @@ from sklearn.preprocessing import StandardScaler
 from collections import defaultdict
 from random import randint as rand
 
-
 def report2dict(cr):
     # Parse rows
     tmp = list()
@@ -57,11 +56,7 @@ def report2dict(cr):
           
         D_class_data.append(d)
     return D_class_data
-# ===========================Flask Connection==========================
-app = Flask(__name__)
 
-@app.route('/')
-# Return the dashboard homepage.
 def index():
     DataObject = {}
     q = "?k="+ str( np.random.randn())
@@ -357,6 +352,12 @@ def index():
     print("Completed Loading")
     return render_template('index.html', **DataObject)
 
+# ===========================Flask Connection==========================
+app = Flask(__name__)
+@app.route('/')
+def home():
+    # Return the dashboard homepage.
+    return index()
 @app.route('/upload', methods=['POST'])
 def predict():
     if 'file' not in request.files:
