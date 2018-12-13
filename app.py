@@ -85,8 +85,8 @@ def index():
     DataObject["hasAnyNullValues"] =hasAnyNullValues
     DataObject["histImageUrl"] = histImageUrl + q
 
-    #print(DataObject)
-
+    print(DataObject)
+    yield " "
     # # Correaltion matrix plot
     
     def plot_corr(total_data, corrFigpath,size=11):
@@ -95,8 +95,9 @@ def index():
         # data frame correlation function
         fig, ax = plt.subplots(figsize=(size, size))
     #     cax = ax.imshow(corr, interpolation="nearest", cmap=cmap)
-        #print("corr:")
-        #print(corr)
+        print("corr:")
+        print(corr)
+        yield " "
         ax.matshow(corr, interpolation="nearest", cmap=cmap)   # color code the rectangles by correlation value
         plt.xticks(range(len(corr.columns)), corr.columns)  # draw x tick marks
         plt.yticks(range(len(corr.columns)), corr.columns)  # draw y tick marks
@@ -156,8 +157,9 @@ def index():
     X = np.array(X)
     pca = PCA(n_components=2, whiten=False).fit(X)
     X_trans = pca.transform(X)
-    #print(pca.explained_variance_ratio_)
+    print(pca.explained_variance_ratio_)
     #print(sum(pca.explained_variance_ratio_))
+    yield " "
 
     plt.figure()
     plt.scatter(X_trans[:, 0], X_trans[:, 1])
@@ -173,11 +175,13 @@ def index():
     clusterimageurl1=basePath + "cluster2.jpg"
     plt.savefig(clusterimageurl1)
     DataObject["clusterimageurl1"]=clusterimageurl1 + q
-    #print("Cluster bin sizes ", Counter(model.labels_))
+    print("Cluster bin sizes ", Counter(model.labels_))
+    yield " "
     model.predict(X_trans)
     model.score(X_trans)
-    #print("Actual class bin sizes ", Counter(y))
-    #print("Cluster bin sizes ", Counter(model.labels_))
+    print("Actual class bin sizes ", Counter(y))
+    print("Cluster bin sizes ", Counter(model.labels_))
+    yield " "
     # Now we will implement our own K-means algo 
     class k_means(object):
             def __init__(self, K=2):
@@ -324,8 +328,9 @@ def index():
     DataObject["logit_roc_auc"]=  logit_roc_auc
     DataObject["cls_report"]=  report2dict(cls_report)
 
-    #print("Logistic AUC=%2.2f" % logit_roc_auc)
-    #print(classification_report(y_test,classifier.predict(X_test)))
+    print("Logistic AUC=%2.2f" % logit_roc_auc)
+    print(classification_report(y_test,classifier.predict(X_test)))
+    yield " "
 
     from sklearn.metrics import roc_curve
     fpr,tpr,thresholds=roc_curve(y_test,classifier.predict_proba(X_test)[:,1])
