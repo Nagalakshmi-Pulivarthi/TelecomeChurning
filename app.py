@@ -57,6 +57,9 @@ def report2dict(cr):
         D_class_data.append(d)
     return D_class_data
 
+# ===========================Flask Connection==========================
+app = Flask(__name__)
+
 def index():
     DataObject = {}
     q = "?k="+ str( np.random.randn())
@@ -350,10 +353,9 @@ def index():
     # Pickle 
     pickle.dump(classifier, open("Classifier.sav", 'wb'))
     print("Completed Loading")
-    yield render_template('index.html', **DataObject)
-
-# ===========================Flask Connection==========================
-app = Flask(__name__)
+    with app.app_context():
+        yield render_template('index.html', **DataObject)
+    
 @app.route('/')
 def home():
     # Return the dashboard homepage.
