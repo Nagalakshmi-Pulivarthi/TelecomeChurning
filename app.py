@@ -181,6 +181,7 @@ def index():
     model.score(X_trans)
     print("Actual class bin sizes ", Counter(y))
     print("Cluster bin sizes ", Counter(model.labels_))
+    yield "<br/>"
     
     # Now we will implement our own K-means algo 
     class k_means(object):
