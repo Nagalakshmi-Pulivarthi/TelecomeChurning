@@ -350,14 +350,15 @@ def index():
     # Pickle 
     pickle.dump(classifier, open("Classifier.sav", 'wb'))
     print("Completed Loading")
-    return render_template('index.html', **DataObject)
+    yield render_template('index.html', **DataObject)
 
 # ===========================Flask Connection==========================
 app = Flask(__name__)
 @app.route('/')
 def home():
     # Return the dashboard homepage.
-    return index()
+    return Response(index(), mimetype='text/html')
+
 @app.route('/upload', methods=['POST'])
 def predict():
     if 'file' not in request.files:
