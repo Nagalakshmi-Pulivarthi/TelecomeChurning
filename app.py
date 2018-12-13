@@ -84,7 +84,8 @@ def index():
     DataObject["histImageUrl"] = histImageUrl + q
 
     print(DataObject)
-
+    yield "<br/>"
+    
     # # Correaltion matrix plot
     
     def plot_corr(total_data, corrFigpath,size=11):
@@ -157,7 +158,7 @@ def index():
     X_trans = pca.transform(X)
     print(pca.explained_variance_ratio_)
     #print(sum(pca.explained_variance_ratio_))
-
+    yield "<br/>" 
 
     plt.figure()
     plt.scatter(X_trans[:, 0], X_trans[:, 1])
@@ -174,12 +175,13 @@ def index():
     plt.savefig(clusterimageurl1)
     DataObject["clusterimageurl1"]=clusterimageurl1 + q
     print("Cluster bin sizes ", Counter(model.labels_))
-    
+    yield "<b>1</b>"
+        
     model.predict(X_trans)
     model.score(X_trans)
     print("Actual class bin sizes ", Counter(y))
     print("Cluster bin sizes ", Counter(model.labels_))
-    yield "<br/>"
+    yield "<b>2</b>"
     
     # Now we will implement our own K-means algo 
     class k_means(object):
