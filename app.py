@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 from matplotlib import cm
 import json
-from flask import Flask, render_template,jsonify,session 
+from flask import Flask, render_template,jsonify,session,Response 
 import datetime as dt
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
