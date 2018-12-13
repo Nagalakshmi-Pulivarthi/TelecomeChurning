@@ -77,7 +77,7 @@ def index():
     #telecome_data.plot(kind='hist',subplots=True,range=(0,150),bins=100,figsize=(10,10))
     # Set figure size
 
-    basePath ="static/img/"
+    basePath ="./Static/img/"
     telecome_data.hist(bins=100,figsize=(10,10),color="#00008B")
     histImageUrl = basePath + "histogram.jpg"
     plt.savefig(histImageUrl)
