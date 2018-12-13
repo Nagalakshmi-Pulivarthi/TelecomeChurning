@@ -290,14 +290,18 @@ def index():
                 return np.array(r)
     model.labels_.astype(float)
     model2 = k_means(10)
+    print("k_means Completed")
     model2.fit(X_trans)
     labels = model2.labels()
     cmap = cm.get_cmap('viridis',30)
     plt.figure(figsize=(8, 6))
     plt.scatter(X_trans[:,0], X_trans[:,1],cmap=cmap, c=labels.astype(float))
     clusterimageurl2=basePath + "cluster3.jpg"
-    plt.savefig(clusterimageurl2)
+    plt.savefig(clusterimageurl2)    
     DataObject["clusterimageurl2"]=clusterimageurl2 + q
+    print("clusterimageurl2 saved")
+    
+    print("Loading csv file")
     #logistic regression model
     file='TelecomUsageDemogFinal.csv'
     total_data=pd.read_csv(file)
