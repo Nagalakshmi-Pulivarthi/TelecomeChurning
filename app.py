@@ -95,8 +95,8 @@ def index():
         # data frame correlation function
         fig, ax = plt.subplots(figsize=(size, size))
     #     cax = ax.imshow(corr, interpolation="nearest", cmap=cmap)
-        print("corr:")
-        print(corr)
+        #print("corr:")
+        #print(corr)
         ax.matshow(corr, interpolation="nearest", cmap=cmap)   # color code the rectangles by correlation value
         plt.xticks(range(len(corr.columns)), corr.columns)  # draw x tick marks
         plt.yticks(range(len(corr.columns)), corr.columns)  # draw y tick marks
@@ -156,8 +156,8 @@ def index():
     X = np.array(X)
     pca = PCA(n_components=2, whiten=False).fit(X)
     X_trans = pca.transform(X)
-    print(pca.explained_variance_ratio_)
-    print(sum(pca.explained_variance_ratio_))
+    #print(pca.explained_variance_ratio_)
+    #print(sum(pca.explained_variance_ratio_))
 
     plt.figure()
     plt.scatter(X_trans[:, 0], X_trans[:, 1])
@@ -173,11 +173,11 @@ def index():
     clusterimageurl1=basePath + "cluster2.jpg"
     plt.savefig(clusterimageurl1)
     DataObject["clusterimageurl1"]=clusterimageurl1 + q
-    print("Cluster bin sizes ", Counter(model.labels_))
+    #print("Cluster bin sizes ", Counter(model.labels_))
     model.predict(X_trans)
     model.score(X_trans)
-    print("Actual class bin sizes ", Counter(y))
-    print("Cluster bin sizes ", Counter(model.labels_))
+    #print("Actual class bin sizes ", Counter(y))
+    #print("Cluster bin sizes ", Counter(model.labels_))
     # Now we will implement our own K-means algo 
     class k_means(object):
             def __init__(self, K=2):
@@ -348,7 +348,7 @@ def index():
 
     # Pickle 
     pickle.dump(classifier, open("Classifier.sav", 'wb'))
-
+    print("Completed Loading")
     return render_template('index.html', **DataObject)
 
 @app.route('/upload', methods=['POST'])
